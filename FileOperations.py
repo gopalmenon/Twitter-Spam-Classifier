@@ -1,4 +1,3 @@
-from sklearn import svm
 import FileOperations as fo
 import numpy as np
 
@@ -17,7 +16,7 @@ def load_twitter_profile_text_file(file_path, file_name, is_spam):
   profile_data = np.genfromtxt(file_path.strip() + file_name.strip(), delimiter="\t")[:, [3,4,5,6,7]].astype(int)
 
   # Class label as a column vector or 1's or 0's corresponding to spam or ham
-  class_label = np.ones(shape=(profile_data.shape[0], 1)) if is_spam else np.zeros(shape=(profile_data.shape[0], 1))
+  class_label = np.ones(profile_data.shape[0], dtype=np.int) if is_spam else np.zeros(profile_data.shape[0], dtype=np.int)
 
   return profile_data, class_label
 
@@ -33,7 +32,7 @@ def get_twitter_profile_details(training_data):
  spam_profile_data, spam_class_label = load_twitter_profile_text_file(TRAINING_DATA_FOLDER if training_data else TESTING_DATA_FOLDER, SPAM_USER_PROFILE_INFO_FILE, is_spam = True)
 
  # Merge the spam and ham profile info and class labels to get data
- training_data = np.concatenate((ham_profile_data, spam_profile_data))
- training_data_class_labels = np.concatenate((ham_class_label, spam_class_label))
+ profile_data = np.concatenate((ham_profile_data, spam_profile_data))
+ profile_data_class_labels = np.concatenate((ham_class_label, spam_class_label))
 
- return training_data, training_data_class_labels
+ return profile_data.tolist(), profile_data_class_labels.tolist()
