@@ -45,12 +45,12 @@ def load_tweets_text_file(file_path, file_name, is_spam):
   print(e)
 
 # Return twitter profile training or testing data along with class labels
-def get_twitter_profile_details(training_data):
+def get_twitter_profile_details(is_training_data):
  # Get ham profile info and class label
- ham_profile_data, ham_class_label = load_twitter_profile_text_file(TRAINING_DATA_FOLDER if training_data else TESTING_DATA_FOLDER, HAM_USER_PROFILE_INFO_FILE, is_spam = False)
+ ham_profile_data, ham_class_label = load_twitter_profile_text_file(TRAINING_DATA_FOLDER if is_training_data else TESTING_DATA_FOLDER, HAM_USER_PROFILE_INFO_FILE, is_spam = False)
 
  # Get spam profile info and class label
- spam_profile_data, spam_class_label = load_twitter_profile_text_file(TRAINING_DATA_FOLDER if training_data else TESTING_DATA_FOLDER, SPAM_USER_PROFILE_INFO_FILE, is_spam = True)
+ spam_profile_data, spam_class_label = load_twitter_profile_text_file(TRAINING_DATA_FOLDER if is_training_data else TESTING_DATA_FOLDER, SPAM_USER_PROFILE_INFO_FILE, is_spam = True)
 
  # Merge the spam and ham profile info and class labels to get data
  profile_data = np.concatenate((ham_profile_data, spam_profile_data))
@@ -59,12 +59,12 @@ def get_twitter_profile_details(training_data):
  return profile_data.tolist(), profile_data_class_labels.tolist()
 
 # Return tweets training or testing data along with class labels
-def get_tweet_details(training_data):
+def get_tweet_details(is_training_data):
  # Get ham profile info and class label
- ham_tweets_data, ham_class_label = load_tweets_text_file(TRAINING_DATA_FOLDER if training_data else TESTING_DATA_FOLDER, HAM_TWEETS_FILE, is_spam = False)
+ ham_tweets_data, ham_class_label = load_tweets_text_file(TRAINING_DATA_FOLDER if is_training_data else TESTING_DATA_FOLDER, HAM_TWEETS_FILE, is_spam = False)
 
  # Get spam profile info and class label
- spam_tweets_data, spam_class_label = load_tweets_text_file(TRAINING_DATA_FOLDER if training_data else TESTING_DATA_FOLDER, SPAM_TWEETS_FILE, is_spam = True)
+ spam_tweets_data, spam_class_label = load_tweets_text_file(TRAINING_DATA_FOLDER if is_training_data else TESTING_DATA_FOLDER, SPAM_TWEETS_FILE, is_spam = True)
 
  # Merge the spam and ham profile info and class labels to get data
  tweets_data = np.concatenate((ham_tweets_data, spam_tweets_data))
