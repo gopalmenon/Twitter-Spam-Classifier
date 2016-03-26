@@ -1,0 +1,106 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Short Sectioned Assignment
+% LaTeX Template
+% Version 1.0 (5/5/12)
+%
+% This template has been downloaded from:
+% http://www.LaTeXTemplates.com
+%
+% Original author:
+% Frits Wenneker (http://www.howtotex.com)
+%
+% License:
+% CC BY-NC-SA 3.0 (http://creativecommons.org/licenses/by-nc-sa/3.0/)
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%----------------------------------------------------------------------------------------
+%	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
+%----------------------------------------------------------------------------------------
+
+\documentclass[paper=a4, fontsize=11pt]{scrartcl} % A4 paper and 11pt font size
+
+\usepackage[T1]{fontenc} % Use 8-bit encoding that has 256 glyphs
+\usepackage{fourier} % Use the Adobe Utopia font for the document - comment this line to return to the LaTeX default
+\usepackage[english]{babel} % English language/hyphenation
+\usepackage{amsmath,amsfonts,amsthm} % Math packages
+
+\usepackage{sectsty} % Allows customizing section commands
+\usepackage[top=5em]{geometry}
+\allsectionsfont{\centering \normalfont\scshape} % Make all sections centered, the default font and small caps
+
+\usepackage{fancyhdr} % Custom headers and footers
+\pagestyle{fancyplain} % Makes all pages in the document conform to the custom headers and footers
+\fancyhead{} % No page header - if you want one, create it in the same way as the footers below
+\fancyfoot[L]{} % Empty left footer
+\fancyfoot[C]{} % Empty center footer
+\fancyfoot[R]{\thepage} % Page numbering for right footer
+\renewcommand{\headrulewidth}{0pt} % Remove header underlines
+\renewcommand{\footrulewidth}{0pt} % Remove footer underlines
+\setlength{\headheight}{5pt} % Customize the height of the header
+
+\numberwithin{equation}{section} % Number equations within sections (i.e. 1.1, 1.2, 2.1, 2.2 instead of 1, 2, 3, 4)
+\numberwithin{figure}{section} % Number figures within sections (i.e. 1.1, 1.2, 2.1, 2.2 instead of 1, 2, 3, 4)
+\numberwithin{table}{section} % Number tables within sections (i.e. 1.1, 1.2, 2.1, 2.2 instead of 1, 2, 3, 4)
+
+\setlength\parindent{0pt} % Removes all indentation from paragraphs - comment this line for an assignment with lots of text
+
+\usepackage{mathtools}
+\usepackage{amssymb}
+\usepackage{gensymb}
+\usepackage{chngcntr}
+\counterwithout{figure}{section}
+%----------------------------------------------------------------------------------------
+%	TITLE SECTION
+%----------------------------------------------------------------------------------------
+
+\newcommand{\horrule}[1]{\rule{\linewidth}{#1}} % Create horizontal rule command with 1 argument of height
+
+\title{	
+\normalfont \normalsize 
+\textsc{Utah State University, Computer Science Department} \\ [25pt] % Your university, school and/or department name(s)
+\horrule{0.5pt} \\[0.4cm] % Thin top horizontal rule
+\huge CS 7930 Social Media Mining\\Homework 2\\ % The assignment title
+\horrule{2pt} \\[0.5cm] % Thick bottom horizontal rule
+}
+
+\author{Gopal Menon} % Your name
+
+\date{\normalsize\today} % Today's date or a custom date
+
+\begin{document}
+
+\maketitle % Print the title
+
+\begin{enumerate}
+
+\item \textbf{Task 1} These are the five features I decided to use in order to distinguish between legitimate users and spammer, and the reason why:
+
+\begin{enumerate}
+
+\item \textbf{Number Of Followings:} I reasoned that a legitimate user would follow the users he was interested in, while a spam user would follow as many people as possible. I have seen from personal experience, that my Twitter account is followed by some people who do not seem to be legitimate users.
+
+\item \textbf{Number Of Followers:} I thought that a legitimate user would have some followers, while a spam user would not have many. It was possible that spam users would follow each other, but I thought I would include this feature all the same.
+
+\item \textbf{Number Of Tweets:} I assumed that a spam user would have a large number of tweets, while a legitimate user would only have a reasonable number.
+
+\item \textbf{Number Of Url Tweets:} Since spam users try to sell services or products, I decided to have a url count in tweets as a feature in order to identify spammers.
+
+\item \textbf{Change in Following:} Following churn would be a good indicator of a spammer and so I decided to use this as a feature.
+
+\end{enumerate}
+
+In order to extract the features from the training and testing data sets, I used Microsoft Excel to import the data as tab separated text. In the case of the file with the following count, I used both tabs and commas as separators while doing the import. I used the Excel Search function to look for a url within the tweet text. Then I used a pivot table to summarize the data so that I got the total count of tweets containing a url for a user. For finding the number of followers, I used the absolute value of the difference between the first and last following counts. Once all data files were imported into excel and the url containing tweets were summarized, I pasted the data side by side onto a single worksheet. I used an Excel formula to identify places where the Twitter User Id did not match on the same row as some data was missing. For these cases, I aligned the data by shifting it down, till the Excel formula showed a match. 
+
+Once the data were available, I saved the Excel worksheets for training and testing data as tab separated text files that I could import using Python. The extracted data contained the columns listed above and in addition, also contained columns for length of screen name, length of user profile description and number of tweets in the tweets file per user.  
+
+\item \textbf{Task 2}
+
+\item \textbf{Task 3}
+
+\end{enumerate}
+
+
+%----------------------------------------------------------------------------------------
+
+\end{document}
