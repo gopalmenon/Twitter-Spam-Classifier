@@ -5,8 +5,8 @@ from sklearn.metrics import recall_score
 from sklearn.metrics import f1_score
 import FileOperations as fo
 
-training_data, training_data_class_labels = fo.get_twitter_profile_details(is_training_data = True, categorize_data = False)
-testing_data, testing_data_class_labels = fo.get_twitter_profile_details(is_training_data = False, categorize_data = False)
+training_data, training_data_class_labels = fo.load_twitter_data_from_file(fo.TRAINING_DATA_FILE_NAME)
+testing_data, testing_data_class_labels = fo.load_twitter_data_from_file(fo.TESTING_DATA_FILE_NAME)
 
 classifier = tree.DecisionTreeClassifier()
 classifier.fit(training_data, training_data_class_labels)
