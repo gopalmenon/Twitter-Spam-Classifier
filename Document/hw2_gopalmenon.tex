@@ -94,7 +94,31 @@ In order to extract the features from the training and testing data sets, I used
 
 Once the data were available, I saved the Excel worksheets for training and testing data as tab separated text files that I could import using Python. The extracted data contained the columns listed above and in addition, also contained columns for length of screen name, length of user profile description and number of tweets in the tweets file per user.  
 
-\item \textbf{Task 2}
+\item \textbf{Task 2} I used the following classifiers for identifying the spammers:
+
+
+\begin{enumerate}
+
+\item AdaBoost Classifier
+
+\item Decision Tree Classifier
+
+\item Logistic Regression Classifier
+
+\end{enumerate}
+
+\begin{tabular}{ 
+|p{4cm}|p{4cm}|p{4cm}|  }
+ \hline
+ \multicolumn{3}{|c|}{Classifier} \\
+ \hline
+ AdaBoost& Decsion Tree &Logistic Regression\\
+ \hline
+ F1 - 0.95   & F1 - 0.88    & F1 - 0.93 \\
+ FPR - &   FPR -  & FPR -\\
+ FNR - &FNR - & FNR -\\
+ \hline
+\end{tabular}
 
 \item \textbf{Task 3}
 
